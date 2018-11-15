@@ -29,13 +29,7 @@ $router->group(['middleware' => 'auth','prefix'=>'api'], function () use ($route
 
 
 });
-$router->get('test','ExampleController@test');
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-$router->get('/users', ['middleware'=>'auth',function() {
-	return "success";
-}]);
+
 
 /*
 $router->get('/key', function() {
