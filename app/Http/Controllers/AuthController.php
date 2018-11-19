@@ -9,6 +9,8 @@ class AuthController extends Controller
    //returns token
     public function authenticate(Request $request)
     {
+        
+       
         $this->validate($request, [
             'login' => 'required',
             'password' => 'required'

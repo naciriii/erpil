@@ -15,8 +15,8 @@ class HasToken
      */
     public function handle($request, Closure $next)
     {
-        if(!$request->has('token')) {
-           return response('Unauthorized.', 401);
+        if(!$request->hasHeader('token')) {
+           return response('Magento Auth token.', 401);
 
         }
         return $next($request);

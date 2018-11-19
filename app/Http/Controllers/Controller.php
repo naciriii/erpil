@@ -16,28 +16,34 @@ class Controller extends BaseController
 
     public function __construct(Client $client,Request $request)
     {
+        
+      
     	$this->validate($request, [
     		'api_url' => 'required']);
     	$this->client = $client;
     	$this->api_url = rtrim($request->api_url,'/');
-    	$this->token = $request->has('token') ?? '';
+    	$this->token = $request->header('token')?? '';
+
+
 
     }
 
     protected function send($method,$url,$headers = null)
     {
-    
+   
     	$headers = $headers??['headers' => 
     	[
     		'Accept' => 'application/json',
     		'Authorization' =>  $this->token
     	]
 		];
+
 		try {
         $response = $this->client->request($method, $this->api_url.'/'.$url, $headers);
         $data = json_decode($response->getBody()->getContents());
     	}catch(GuzzleException $e) {
-    	$data = ['status' => 'Unauthorized'];
+            dd($e);
+    	$data = ['status' => 'Unauthorized Magento'];
 
 
     }
@@ -49,6 +55,7 @@ class Controller extends BaseController
 
     protected function getAuthToken($login,$pass)
     {
+
 
     $url = $this->api_url.'/'.config('api.auth_url');
   
@@ -64,8 +71,9 @@ class Controller extends BaseController
 	]);
     	$data = json_decode($response->getBody()->getContents());
     } catch(GuzzleException $e) {
-    	$data = ['status' => 'Unauthorized'];
+    	$data = ['status' => 'Unauthorized Magento'];
     }
+    die(json_encode($data));
 
         return $data;
 }

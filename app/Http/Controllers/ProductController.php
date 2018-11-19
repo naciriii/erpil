@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
 
     //
     public function index()
     {
     	
-        $data = $this->send('GET',config('api.categories_url'));
+        $data = $this->send('GET',config('api.products_url'));
 
         return response()->json($data);
     }
