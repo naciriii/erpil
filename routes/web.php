@@ -1,5 +1,9 @@
 <?php
 
+$router->get('/',function() use ($router){
+	return 'Integration Layer service';
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
