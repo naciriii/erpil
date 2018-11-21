@@ -30,6 +30,7 @@ $router->post('auth','AuthController@authenticate');
 	$router->post('/categories','CategoryController@index');
 
 	$router->post('/products','ProductController@index');
+	$router->post('/products/{sku}','ProductController@show');
 
 
 	});

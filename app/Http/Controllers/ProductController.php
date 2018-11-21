@@ -13,4 +13,10 @@ class ProductController extends Controller
 
         return response()->json($data);
     }
+    public function show($sku)
+    {
+    	$data = $this->send('GET',str_replace('{sku}',$sku,config('api.get_product_url')));
+    	return response()->json($data);
+
+    }
 }
