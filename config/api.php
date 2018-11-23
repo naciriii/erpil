@@ -5,6 +5,7 @@ return [
 'auth_url' => 'integration/admin/token',
 'categories_url' => 'categories',
 'products_url' => 'products?searchCriteria',
-'get_product_url' => 'products/{sku}'
+'get_product_url' => 'products/{sku}',
+'post_product_url' => 'products'
 
 ];

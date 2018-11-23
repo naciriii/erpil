@@ -28,18 +28,25 @@ class Controller extends BaseController
 
     }
 
-    protected function send($method,$url,$headers = null)
+    protected function send($method,$url, $body = null, $headers = null)
     {
+        $options = [];
    
-    	$headers = $headers??['headers' => 
-    	[
+    	$headers = $headers??[
     		'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
     		'Authorization' =>  $this->token
-    	]
-		];
+    	];
+
+		$options['headers'] = $headers;
+        if($body != null) {
+            $options['body'] = $body;
+        }
+        //dd($options);
+
 
 		try {
-        $response = $this->client->request($method, $this->api_url.'/'.$url, $headers);
+        $response = $this->client->request($method, $this->api_url.'/'.$url, $options);
         $data = json_decode($response->getBody()->getContents());
     	}catch(GuzzleException $e) {
             dd($e);
