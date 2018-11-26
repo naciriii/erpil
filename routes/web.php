@@ -32,6 +32,8 @@ $router->post('auth','AuthController@authenticate');
 	$router->post('/products','ProductController@index');
 	$router->post('/products/store','ProductController@store');
 	$router->post('/products/{sku}','ProductController@show');
+	$router->put('/products/{sku}','ProductController@update');
+
 
 
 	});

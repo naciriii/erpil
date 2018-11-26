@@ -6,6 +6,7 @@ return [
 'categories_url' => 'categories',
 'products_url' => 'products?searchCriteria',
 'get_product_url' => 'products/{sku}',
-'post_product_url' => 'products'
+'post_product_url' => 'products',
+'update_product_url' => 'products/{sku}'
 
 ];

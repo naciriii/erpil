@@ -9,6 +9,7 @@ class ProductController extends Controller
     //
     public function index()
     {
+        
     	
         $data = $this->send('GET',config('api.products_url'));
 
@@ -30,4 +31,14 @@ class ProductController extends Controller
         return response()->json($data);
 
     }
+     public function update($sku, Request $request)
+    {
+        dd($requesdt->all());
+       
+        $data = $this->send('PUT',str_replace('{sku}',$sku,config('api.update_product_url'),$request->product));
+
+        return response()->json($data);
+
+    }
+
 }
