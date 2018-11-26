@@ -33,9 +33,8 @@ class ProductController extends Controller
     }
      public function update($sku, Request $request)
     {
-        dd($requesdt->all());
        
-        $data = $this->send('PUT',str_replace('{sku}',$sku,config('api.update_product_url'),$request->product));
+        $data = $this->send('PUT',str_replace('{sku}',$sku,config('api.update_product_url')),$request->product);
 
         return response()->json($data);
 
