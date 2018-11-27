@@ -16,8 +16,8 @@ class Controller extends BaseController
 
     public function __construct(Client $client,Request $request)
     {
-        
-      
+
+
     	$this->validate($request, [
     		'api_url' => 'required']);
     	$this->client = $client;
@@ -28,7 +28,7 @@ class Controller extends BaseController
 
     }
 
-    protected function send($method,$url, $body = null, $headers = null)
+    protected function send($method, $url, $body = null, $headers = null)
     {
         $options = [];
    
@@ -43,6 +43,9 @@ class Controller extends BaseController
             $options['body'] = $body;
         }
         //dd($options);
+        if($method == 'GET') {
+        $options['headers']['Cache-Control'] = 'max-age=3600';
+    }
 
 
 		try {

@@ -9,6 +9,7 @@ class ProductController extends Controller
     //
     public function index()
     {
+        
         // improvised work around to join stock items with products to get quantities
         // lack of resource because of magento rest api
     	
