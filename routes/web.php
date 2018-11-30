@@ -35,6 +35,9 @@ $router->post('auth','AuthController@authenticate');
 	$router->post('/products/update/{sku}','ProductController@update');
 	$router->post('/products/delete/{sku}','ProductController@delete');
 
+	$router->post('/customers','CustomerController@index');
+	
+
 
 
 	});

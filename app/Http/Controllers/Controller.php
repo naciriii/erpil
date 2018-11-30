@@ -43,9 +43,9 @@ class Controller extends BaseController
             $options['body'] = $body;
         }
         //dd($options);
-        if($method == 'GET') {
+       /* if($method == 'GET') {
         $options['headers']['Cache-Control'] = 'max-age=3600';
-    }
+    }*/
 
 
 		try {
