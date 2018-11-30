@@ -35,10 +35,6 @@ class Controller extends BaseController
         if ($body != null) {
             $options['body'] = $body;
         }
-        //dd($options);
-        if ($method == 'GET') {
-            $options['headers']['Cache-Control'] = 'max-age=3600';
-        }
 
         try {
             $response = $this->client->request($method, $this->api_url . '/' . $url, $options);

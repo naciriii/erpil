@@ -35,12 +35,6 @@ $router->group(['middleware' => 'auth', 'prefix' => 'api'], function () use ($ro
         $router->post('/products/{sku}', 'ProductController@show');
         $router->post('/products/update/{sku}', 'ProductController@update');
         $router->post('/products/delete/{sku}', 'ProductController@delete');
+        $router->post('/customers','CustomerController@index');
     });
-
-
 });
-
-/*
-$router->get('/key', function() {
-    return str_random(32);
-});*/
