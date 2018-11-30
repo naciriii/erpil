@@ -17,7 +17,6 @@ class HasToken
     {
         if(!$request->hasHeader('token')) {
            return response('Magento Auth token.', 401);
-
         }
         return $next($request);
     }
