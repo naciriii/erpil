@@ -4,7 +4,11 @@ return [
 
     'auth_url' => 'integration/admin/token',
     'categories_url' => 'categories',
+    'get_category_url' => 'categories/{id}',
     'post_category_url' => 'categories',
+    'update_category_url' => 'categories/{id}',
+    'delete_category_url' => 'categories/{id}',
+
 
     'products_url' => 'products?searchCriteria',
     'get_product_url' => 'products/{sku}',

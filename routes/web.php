@@ -29,6 +29,10 @@ $router->group(['middleware' => 'auth', 'prefix' => 'api'], function () use ($ro
         */
         $router->post('/categories', 'CategoryController@index');
         $router->post('/categories/store', 'CategoryController@store');
+        $router->post('/categories/{id}', 'CategoryController@show');
+
+        $router->post('/categories/update/{id}', 'CategoryController@update');
+        $router->post('/categories/delete/{id}', 'CategoryController@delete');
 
         $router->post('/products', 'ProductController@index');
         $router->post('/products/store', 'ProductController@store');
