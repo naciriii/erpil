@@ -10,7 +10,9 @@ return [
     'delete_category_url' => 'categories/{id}',
 
 
-    'products_url' => 'products?searchCriteria=[]',
+    'products_url' => 'products?searchCriteria[page_size]={page_size}&searchCriteria[current_page]={current_page}',
+
+
     'get_product_url' => 'products/{sku}',
     'post_product_url' => 'products',
     'update_product_url' => 'products/{sku}',
