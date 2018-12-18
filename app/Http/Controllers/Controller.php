@@ -24,6 +24,7 @@ class Controller extends BaseController
 
     protected function send($method, $url, $body = null, $headers = null)
     {
+
         $options = [];
         $headers = $headers ?? [
                 'Accept' => 'application/json',
@@ -36,6 +37,31 @@ class Controller extends BaseController
             $options['body'] = $body;
         }
 
+        try {
+            $response = $this->client->request($method, $this->api_url . '/' . $url, $options);
+            $data = json_decode($response->getBody()->getContents());
+        } catch (GuzzleException $e) {
+            dd($e);
+            $data = ['status' => 'Unauthorized Magento'];
+        }
+        return $data;
+    }
+
+    protected function upload($method, $url, $body = null, $headers = null)
+    {
+
+        $options = [];
+        $headers = $headers ?? [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'Authorization' => $this->token
+            ];
+
+        $options['headers'] = $headers;
+        if ($body != null) {
+            $options['form_params'] = $body;
+        }
+        //dd("test: ",$options['form_params']);
         try {
             $response = $this->client->request($method, $this->api_url . '/' . $url, $options);
             $data = json_decode($response->getBody()->getContents());
