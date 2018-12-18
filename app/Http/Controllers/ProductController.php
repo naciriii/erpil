@@ -25,11 +25,11 @@ class ProductController extends Controller
     {
         $data = $this->send('GET', str_replace('{sku}', $sku, config('api.get_product_url')));
         return response()->json($data);
-
     }
 
     public function store(Request $request)
     {
+        //dd($request->input());
         $data = $this->send('POST', config('api.post_product_url'), $request->product);
         return response()->json($data);
     }
@@ -43,6 +43,20 @@ class ProductController extends Controller
     public function delete($sku)
     {
         $data = $this->send("DELETE", str_replace('{sku}', $sku, config('api.delete_product_url')));
+        return response()->json($data);
+    }
+
+    public function addProductMedia($sku, Request $request)
+    {
+
+        $data = $this->send("POST", str_replace('{sku}', $sku, config('api.post_product_media_url')), $request->entry);
+        return response()->json($data);
+    }
+
+    public function updateProductMedia($sku, Request $request)
+    {
+
+        $data = $this->send('PUT', str_replace(['{sku}', '{mediaId}'], [$sku, $request->mediaId], config('api.update_product_media_url')), $request->entry);
         return response()->json($data);
     }
 }
