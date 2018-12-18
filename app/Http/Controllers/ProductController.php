@@ -8,11 +8,14 @@ class ProductController extends Controller
 {
 
     //
-    public function index()
+    public function index(Request $request)
     {
         // improvised work around to join stock items with products to get quantities
         // lack of resource because of magento rest api
-        $products = $this->send('GET', config('api.products_url'));
+        //$products = $this->send('GET', config('api.products_url'));
+        $products = $this->send('GET', str_replace(['{page_size}', '{current_page}'], [$request->page_size, $request->current_page],
+            config('api.products_url')
+        ));
         $quantities = $this->send('GET', config('api.get_products_quantities'));
         $quantities = collect($quantities->items);
         foreach ($products->items as $product) {
