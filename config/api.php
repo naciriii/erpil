@@ -1,5 +1,9 @@
 <?php
-
+/*
+ * searchCriteria[filter_groups][0][filters][1][field]=sku&
+    searchCriteria[filter_groups][0][filters][1][value]={search}%25&
+    searchCriteria[filter_groups][0][filters][1][condition_type]=like&
+    */
 return [
 
     'auth_url' => 'integration/admin/token',
@@ -11,7 +15,8 @@ return [
 
 
     'products_url' => 'products?searchCriteria[page_size]={page_size}&searchCriteria[current_page]={current_page}',
-    'products_by_filter_url' => 'products?searchCriteria[filter_groups][0][filters][0][field]={field}&searchCriteria[filter_groups][0][filters][0][value]=%{value}%&searchCriteria[filter_groups][0][filters][0][condition_type]=like&searchCriteria[filter_groups][0][filters][1][field]=sku&searchCriteria[filter_groups][0][filters][1][value]=%{sku_value}%&searchCriteria[filter_groups][0][filters][1][condition_type]=like&searchCriteria[page_size]={page_size}&searchCriteria[current_page]={current_page}',
+    'products_search_url' => 'products?searchCriteria[filter_groups][0][filters][0][field]=name&searchCriteria[filter_groups][0][filters][0][value]={search}%25&searchCriteria[filter_groups][0][filters][0][condition_type]=like&searchCriteria[filter_groups][0][filters][1][field]=sku&searchCriteria[filter_groups][0][filters][1][value]={search}%25&searchCriteria[filter_groups][0][filters][1][condition_type]=like&searchCriteria[page_size]={page_size}&searchCriteria[current_page]={current_page}',
+
     'get_product_url' => 'products/{sku}',
     'post_product_url' => 'products',
     'update_product_url' => 'products/{sku}',

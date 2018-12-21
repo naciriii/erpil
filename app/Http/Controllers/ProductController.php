@@ -30,13 +30,13 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
-    public function findBy(Request $request)
+    public function search(Request $request)
     {
         $products = $this->send('GET',
             str_replace(
-                ['{field}', '{value}', '{page_size}', '{current_page}','{sku_value}'],
-                [$request->field, $request->value, $request->page_size, $request->current_page,$request->value],
-                config('api.products_by_filter_url')));
+                ['{search}', '{page_size}', '{current_page}'],
+                [ $request->search, $request->page_size, $request->current_page],
+                config('api.products_search_url')));
 
         $quantities = $this->send('GET', config('api.get_products_quantities'));
         $quantities = collect($quantities->items);

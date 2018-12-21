@@ -36,7 +36,7 @@ $router->group(['middleware' => 'auth', 'prefix' => 'api'], function () use ($ro
 
         $router->post('/products', 'ProductController@index');
         $router->post('/products/store', 'ProductController@store');
-        $router->post('/products/findby', 'ProductController@findBy');
+        $router->post('/products/search', 'ProductController@search');
         $router->post('/products/{sku}', 'ProductController@show');
         $router->post('/products/update/{sku}', 'ProductController@update');
         $router->post('/products/delete/{sku}', 'ProductController@delete');
