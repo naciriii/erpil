@@ -27,6 +27,15 @@ class CustomerController extends Controller
         return response()->json($data);
     }
 
+    public function search (Request $request)
+    {
+        $data = $this->send('GET', str_replace(
+            ['{value}', '{page_size}', '{current_page}'],
+            [$request->search, $request->page_size,$request->current_page],
+            config('api.customers_search_url')));
+        return response()->json($data);
+    }
+
     public function store(Request $request)
     {
         $data = $this->send('POST', config('api.post_customer_url'), $request->customer);
