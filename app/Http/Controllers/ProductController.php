@@ -30,9 +30,25 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
+    public function search(Request $request)
+    {
+        $products = $this->send('GET',
+            str_replace(
+                ['{search}', '{page_size}', '{current_page}'],
+                [ $request->search, $request->page_size, $request->current_page],
+                config('api.products_search_url')));
+
+        $quantities = $this->send('GET', config('api.get_products_quantities'));
+        $quantities = collect($quantities->items);
+        foreach ($products->items as $product) {
+            $product->qty = $quantities->where('product_id', $product->id)->first()->qty ?? null;
+        }
+
+        return response()->json($products);
+    }
+
     public function store(Request $request)
     {
-        //dd($request->input());
         $data = $this->send('POST', config('api.post_product_url'), $request->product);
         return response()->json($data);
     }
@@ -58,7 +74,6 @@ class ProductController extends Controller
 
     public function updateProductMedia($sku, Request $request)
     {
-
         $data = $this->send('PUT', str_replace(['{sku}', '{mediaId}'], [$sku, $request->mediaId], config('api.update_product_media_url')), $request->entry);
         return response()->json($data);
     }
