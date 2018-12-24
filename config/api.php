@@ -1,9 +1,5 @@
 <?php
-/*
- * searchCriteria[filter_groups][0][filters][1][field]=sku&
-    searchCriteria[filter_groups][0][filters][1][value]={search}%25&
-    searchCriteria[filter_groups][0][filters][1][condition_type]=like&
-    */
+
 return [
 
     'auth_url' => 'integration/admin/token',
