@@ -42,14 +42,15 @@ $router->group(['middleware' => 'auth', 'prefix' => 'api'], function () use ($ro
         $router->post('/products/update/media/{sku}', 'ProductController@updateProductMedia');
 
         $router->post('/customers','CustomerController@index');
-
         $router->post('/customers/store', 'CustomerController@store');
         $router->post('/customers/findby', 'CustomerController@findBy');
         $router->post('/customers/{customerId}', 'CustomerController@show');
-
         $router->post('/customers/update/{customerId}', 'CustomerController@update');
-
         $router->post('/customers/delete/{id}', 'CustomerController@delete');
+
+        $router->post('/orders','OrderController@index');
+        $router->post('/orders/store', 'OrderController@store');
+   
 
 
     });
