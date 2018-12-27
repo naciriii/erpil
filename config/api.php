@@ -28,6 +28,9 @@ return [
     'get_customer_url' => 'customers/{id}',
     'post_customer_url' => 'customers',
     'update_customer_url' => 'customers/{id}',
-    'delete_customer_url' => 'customers/{id}'
+    'delete_customer_url' => 'customers/{id}',
+
+    'orders_url' => 'orders?searchCriteria[page_size]={page_size}&searchCriteria[current_page]={current_page}',
+    'orders_update_status_url' => 'orders',
 ];
 
