@@ -55,5 +55,9 @@ $router->group(['middleware' => 'auth', 'prefix' => 'api'], function () use ($ro
         $router->post('/orders','OrderController@index');
         $router->post('/orders/update/status', 'OrderController@updateOrderStatus');
 
+
+        $router->post('/invoices', 'InvoiceController@index');
+        //$router->post('/create/invoices', 'InvoiceController@store');
+        $router->post('/invoices/{orderId}', 'InvoiceController@show');
     });
 });

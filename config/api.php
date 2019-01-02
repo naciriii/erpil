@@ -32,5 +32,9 @@ return [
 
     'orders_url' => 'orders?searchCriteria[page_size]={page_size}&searchCriteria[current_page]={current_page}',
     'orders_update_status_url' => 'orders',
+
+    'invoices_url' => 'invoices?searchCriteria[page_size]={page_size}&searchCriteria[current_page]={current_page}',
+    'get_order_url' => 'orders/{id}',
+    'get_invoice_url' => 'invoices/{id}',
 ];
 

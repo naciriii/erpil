@@ -46,7 +46,6 @@ class OrderController extends Controller
     {
         $data = $this->send('POST',
                 config('api.orders_update_status_url'), $request->entity);
-
         return response()->json($data);
     }
 }
