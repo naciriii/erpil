@@ -18,6 +18,7 @@ class ProductController extends Controller
         ));
         $quantities = $this->send('GET', config('api.get_products_quantities'));
         $quantities = collect($quantities->items);
+
         foreach ($products->items as $product) {
             $product->qty = $quantities->where('product_id', $product->id)->first()->qty ?? null;
         }
